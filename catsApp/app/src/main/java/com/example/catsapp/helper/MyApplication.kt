@@ -1,4 +1,4 @@
-package com.espoo.android.helper
+package com.example.catsapp.helper
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

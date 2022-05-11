@@ -1,0 +1,9 @@
+{
+  "data": {
+    "error": "Malformed auth header",
+    "request": "\/3\/gallery\/search\/",
+    "method": "GET"
+  },
+  "success": false,
+  "status": 403
+}

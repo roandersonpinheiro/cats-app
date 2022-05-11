@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.catsapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:name="com.espoo.android.helper.MyApplication"
+        android:name="com.example.catsapp.helper.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

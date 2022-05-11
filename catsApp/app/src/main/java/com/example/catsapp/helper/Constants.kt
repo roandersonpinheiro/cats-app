@@ -1,5 +1,5 @@
-package com.espoo.android.helper
+package com.example.catsapp.helper
 
 object Constants {
-    const val BASE_URL = ""
+    const val BASE_URL = "https://api.imgur.com/"
 }
