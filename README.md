@@ -24,6 +24,22 @@ Showing the images
 Create an Android app in the Kotlin programming language with just one screen to show the
 fetched images in a gallery.
   
+### Tech stack & Open-source libraries  
+ - Minimum SDK level 16
+ - [Kotlin](https://kotlinlang.org/) based, [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) for asynchronous.
+ - [Hilt](https://dagger.dev/hilt/) for dependency injection.
+ - Architecture
+    - MVVM Architecture (View - DataBinding - ViewModel - Model)
+    - Repository Pattern
+ - [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - Construct the REST APIs.
+ - [GSON](https://github.com/google/gson) - JSON library for Kotlin and Java.
+  
+  
+### Architecture  
+CatApp is based on the MVVM architecture and the Repository pattern.
+  ![mvvm](https://user-images.githubusercontent.com/81362718/168135484-330637d7-8050-4d6f-aabc-612aa38e50d9.png)
+
+
 ## System requirements
 Before starting, you will need to have the following tools installed on your machine
 [Git](https://git-scm.com), [Java JDK](https://www.oracle.com/java/technologies/ac/)
