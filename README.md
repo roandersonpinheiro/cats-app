@@ -2,7 +2,7 @@
 
 ![igmr](https://user-images.githubusercontent.com/81362718/168088513-bf2f076a-e0ac-4cc8-8562-4febc55665f0.jpeg)
 
-<p>The objective of the application is to fetch cats images from https://imgur.com, and show the
+<p>The goal of the application is to fetch cats images from https://imgur.com, and show the
 images on gallery.</>
   
 ## Fetching the images
