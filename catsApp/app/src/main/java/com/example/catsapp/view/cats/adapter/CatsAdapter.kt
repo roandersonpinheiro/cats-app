@@ -1,40 +1,47 @@
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.catsapp.R
+import com.example.catsapp.databinding.CatsItemViewBinding
 import com.example.catsapp.model.Image
-import com.squareup.picasso.Picasso
+
+class CatsAdapter(private val clickListener: CatsClickListener) :
+    ListAdapter<Image, CatsAdapter.CatViewHolder>(CatsDiffCallback()) {
+
+    override fun onBindViewHolder(holder: CatViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.bind(clickListener, item)
+    }
+
+    class CatViewHolder private constructor(private val binding: CatsItemViewBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
 
-class CatsAdapter(private val clickListener: CatsClickListener) : ListAdapter<Image, CatsAdapter.CatViewHolder>(CatsDiffCallback()) {
-
-    class CatViewHolder private constructor (itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val catImage : ImageView = itemView.findViewById(R.id.imageViewCatImage)
-        fun bin(clickListener: CatsClickListener, item: Image) {
-            Picasso.get().load(item.thumbLink ?: item.link).fit().into(catImage)
-            itemView.setOnClickListener{
-                clickListener.onClick(item)
+        fun bind(clickListener: CatsClickListener, item: Image) {
+            with(binding) {
+                imageDto = item
+                itemView.setOnClickListener {
+                    clickListener.onClick(item)
+                }
+                executePendingBindings()
             }
         }
 
         companion object {
             fun from(parent: ViewGroup): CatViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.cats_item_view, parent, false)
-                return CatViewHolder(view)
+                val binding: CatsItemViewBinding = CatsItemViewBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+                return CatViewHolder(binding)
+
             }
         }
     }
 
-    override fun onBindViewHolder(holder: CatViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bin(clickListener, item)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
         return CatViewHolder.from(parent)
@@ -53,6 +60,6 @@ class CatsDiffCallback : DiffUtil.ItemCallback<Image>() {
 
 }
 
-class CatsClickListener(val clickListener: (catId: Int) -> Unit) {
-    fun onClick(image: Image) = clickListener(Integer.parseInt(image.id))
+class CatsClickListener(val clickListener: (catId: String) -> Unit) {
+    fun onClick(image: Image) = clickListener(image.id)
 }

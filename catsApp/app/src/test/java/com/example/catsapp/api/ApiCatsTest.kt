@@ -86,11 +86,10 @@ class ApiCatsTest {
         // Assign
         val response = MockResponse()
             .setResponseCode(HttpURLConnection.HTTP_NOT_FOUND)
-            .setBody(MockResponseFileReader("cats/failed_response_403.json").content)
+            .setBody(MockResponseFileReader("cats/failed_response_404.json").content)
         mockWebServer.enqueue(response)
         // Act
         val  actualResponse = service.getFetchCats().execute()
-        actualResponse.message()
         // Assert
         assertEquals(null,actualResponse.body())
     }
